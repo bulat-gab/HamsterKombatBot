@@ -1,0 +1,14 @@
+[Unit]
+Description=HamsterKombatBotService
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/home/ubuntu/HamsterKombatBot/
+Environment=PATH=/home/ubuntu/HamsterKombatBot/venv/bin/
+ExecStart=/home/ubuntu/HamsterKombatBot/venv/bin/python3 /home/ubuntu/HamsterKombatBot/main.py -a 2
+
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
