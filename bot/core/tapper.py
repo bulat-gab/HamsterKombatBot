@@ -285,6 +285,7 @@ class Tapper:
                 logger.success(
                     f'{self.session_name} | Successful tapped! | '
                     f'Balance: <c>{balance:,}</c> (<g>+{calc_taps:,}</g>) | Total: <e>{total:,}</e>'
+                    f'| Taps left: {int(available_energy)}'
                 )
 
                 if active_turbo is False:
