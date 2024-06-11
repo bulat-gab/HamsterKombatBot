@@ -290,7 +290,8 @@ class Tapper:
                     earn_on_hour = player_data['earnPassivePerHour']
 
                     logger.success(f"{self.session_name} | Successful tapped! | "
-                                   f"Balance: <c>{balance:,}</c> (<lg>+{calc_taps:,}</lg>) | Total: <le>{total:,}</le>")
+                                   f"Balance: <c>{balance:,}</c> (<lg>+{calc_taps:,}</lg>) | Total: <le>{total:,}</le>"
+                                   f"| Taps left: {int(available_energy)}")
 
                 if settings.AUTO_UPGRADE is True:
                     for _ in range(settings.UPGRADES_COUNT):
