@@ -6,7 +6,8 @@ Description=Run docker compose HamsterKombatBot
 Type=oneshot
 RemainAfterExit=yes
 WorkingDirectory=/root/HamsterKombatBot
-ExecStart=/usr/bin/docker-compose -f /root/HamsterKombatBot/docker-compose.yml up -d --remove-orphans
+ExecStart=/usr/bin/docker compose -f /root/HamsterKombatBot/docker-compose.yml up -d --remove-orphans
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
