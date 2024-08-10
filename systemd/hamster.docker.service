@@ -1,0 +1,12 @@
+[Unit]
+After=docker.service
+Description=Run docker compose HamsterKombatBot
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/root/HamsterKombatBot
+ExecStart=/usr/bin/docker-compose -f /root/HamsterKombatBot/docker-compose.yml up -d --remove-orphans
+
+[Install]
+WantedBy=multi-user.target
