@@ -4,6 +4,7 @@ from better_proxy import Proxy
 from bot.utils.logger import logger
 from bot.utils.json_db import JsonDB
 
+import sys
 
 def get_proxy_dict(proxy: str):
     try:
@@ -23,10 +24,13 @@ def get_proxy_dict(proxy: str):
 
 
 def get_proxy_string(name: str):
-    db = JsonDB("profiles")
+    db = JsonDB("do_not_commit.profiles.json")
 
     data = db.get_data()
-    proxy = data.get(name, {}).get("proxy", "")
+    proxy = data.get(name, {}).get("proxy")
+    if not proxy:
+        logger.error(f"Proxy for session {name} not found.")
+        sys.exit()
 
     return proxy
 
