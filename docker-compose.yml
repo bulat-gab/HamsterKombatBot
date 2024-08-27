@@ -13,6 +13,6 @@ services:
     command: "python3 main.py -a 2"
     volumes:
       - ./sessions:/app/sessions
-      - ./profiles.json:/app/profiles.json
+      - ./do_not_commit.profiles.json.json:/app/do_not_commit.profiles.json.json
     env_file:
       - .env
