@@ -1,3 +1,4 @@
+from typing import Optional
 import aiohttp
 from better_proxy import Proxy
 
@@ -23,14 +24,13 @@ def get_proxy_dict(proxy: str):
         return None
 
 
-def get_proxy_string(name: str):
+def get_proxy_string(name: str) -> Optional[str]:
     db = JsonDB("do_not_commit.profiles.json")
 
     data = db.get_data()
-    proxy = data.get(name, {}).get("proxy")
+    proxy: str = data.get(name, {}).get("proxy")
     if not proxy:
-        logger.error(f"Proxy for session {name} not found.")
-        sys.exit()
+        return None
 
     return proxy
 

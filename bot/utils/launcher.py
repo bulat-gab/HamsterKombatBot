@@ -81,7 +81,15 @@ async def process() -> None:
 
 
 async def run_tasks(tg_clients: list[Client]):
-    tasks = [asyncio.create_task(run_tapper(tg_client=tg_client, proxy=get_proxy_string(tg_client.name)))
-             for tg_client in tg_clients]
+    tasks = []
+    for tg_client in tg_clients:
+        proxy_str = get_proxy_string(tg_client.name)
+        if not proxy_str:
+            logger.warning(f"Proxy for session '{tg_client.name}' was not found. Skipping this sessions.")
+            continue
+        
+        t = asyncio.create_task(run_tapper(tg_client=tg_client, proxy=proxy_str))
+        tasks.append(t)
+
 
     await asyncio.gather(*tasks)
