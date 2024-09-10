@@ -6,8 +6,8 @@ services:
     logging:
       driver: "json-file"
       options:
-        max-file: 5
-        max-size: 100m
+        max-file: 3
+        max-size: 10m
     stop_signal: SIGINT
     restart: unless-stopped
     command: "python3 main.py -a 2"
